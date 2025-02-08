@@ -4,7 +4,14 @@
  * and open the template in the editor.
  */
 package guisystem;
+import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  *
@@ -18,8 +25,12 @@ public class registrationForm extends javax.swing.JFrame {
     public registrationForm() {
         initComponents();
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        
+        
     }
-
+        Color hover = new Color (204,255,255);
+        Color defaultcolor = new Color (0,102,102);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,26 +45,28 @@ public class registrationForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        fn = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        cityadd = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        datebirth = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        status = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        contactnumber = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         un = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        pass = new javax.swing.JPasswordField();
         jLabel14 = new javax.swing.JLabel();
         confirmpass = new javax.swing.JPasswordField();
-        pass = new javax.swing.JPasswordField();
+        exit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        fn = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        ct = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        dt = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        em = new javax.swing.JTextField();
+        email = new javax.swing.JLabel();
+        cn = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        eml = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,136 +88,66 @@ public class registrationForm extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 204, 255));
         jLabel6.setText("SYSTEM");
 
-        jLabel7.setFont(new java.awt.Font("Showcard Gothic", 1, 48)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Showcard Gothic", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 255, 255));
         jLabel7.setText("HOSPITAL BILLING ");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guisystem/images__1_-removebg-preview.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(203, 203, 203)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(193, 193, 193))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(jLabel2)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addContainerGap(306, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 0, 640, 900));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("PATIENT REGISTRATION FORM");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 530, 70));
-
-        fn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 490, 40));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Patient Full Name :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(255, 102, 102));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 810, 110, 50));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 153, 10));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Already ave an account? Click to Login");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 870, -1, 20));
-
-        cityadd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cityadd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(cityadd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 490, 40));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("City & Address :");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-
-        datebirth.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        datebirth.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(datebirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 490, 40));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Date of Birth :");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        status.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        status.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 490, 40));
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Status :");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
-
-        contactnumber.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        contactnumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(contactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 490, 40));
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Contact No. :");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
-
-        un.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        un.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         un.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         un.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unActionPerformed(evt);
             }
         });
-        jPanel1.add(un, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 490, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Enter Username :");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Enter Password :");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, -1, -1));
+
+        pass.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Confirm Password :");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 720, -1, -1));
 
+        confirmpass.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         confirmpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(confirmpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, 490, 40));
+        confirmpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmpassActionPerformed(evt);
+            }
+        });
 
-        pass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 670, 490, 40));
+        exit.setBackground(new java.awt.Color(0, 102, 102));
+        exit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        exit.setForeground(new java.awt.Color(255, 255, 255));
+        exit.setText("Exit");
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitMouseExited(evt);
+            }
+        });
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 102, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -214,13 +157,188 @@ public class registrationForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
         });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 810, 120, 50));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(153, 255, 153));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Already have an account? Click to Login.");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel4MouseExited(evt);
+            }
+        });
+
+        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Show password");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(194, 194, 194))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(88, 88, 88)
+                                        .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(32, 32, 32))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(80, 80, 80)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(un, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(confirmpass, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(jCheckBox1))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(jLabel2)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(173, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel12)
+                .addGap(10, 10, 10)
+                .addComponent(un, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmpass, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, -140, 640, 900));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel1.setText("PATIENT REGISTRATION FORM");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 530, 70));
+
+        fn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        fn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 350, 60));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Patient Full Name :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
+        ct.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ct.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ctActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ct, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 350, 60));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("City & Address :");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
+
+        dt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        dt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        dt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 350, 60));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Date of Birth :");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+
+        em.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        em.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        em.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emActionPerformed(evt);
+            }
+        });
+        em.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emKeyReleased(evt);
+            }
+        });
+        jPanel1.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, 350, 60));
+
+        email.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        email.setText("Email :");
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, -1, -1));
+
+        cn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(cn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 680, 350, 60));
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Contact No. :");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 640, -1, -1));
+
+        eml.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        eml.setForeground(new java.awt.Color(255, 102, 102));
+        jPanel1.add(eml, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,19 +349,13 @@ public class registrationForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       loginForm log = new loginForm();
-       log.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
        loginForm log = new loginForm();
@@ -253,48 +365,95 @@ public class registrationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (fn.getText().isEmpty() ||
-           cityadd.getText().isEmpty() ||
-           datebirth.getText().isEmpty() ||
-           status.getText().isEmpty() ||
-           contactnumber.getText().isEmpty() ||
-           un.getText().isEmpty() ||
-           new String(pass.getPassword()).isEmpty() ||
-           new String(confirmpass.getPassword()).isEmpty()) {
+ if (fn.getText().isEmpty() ||
+            ct.getText().isEmpty() ||
+            dt.getText().isEmpty() ||
+            em.getText().isEmpty() ||
+            cn.getText().isEmpty() ||
+            un.getText().isEmpty() ||
+            new String(pass.getPassword()).isEmpty() ||
+            new String(confirmpass.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All Fields Are Required");
+            return;
+        } 
+        
+        if (fn.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Patient Name is required");
+            fn.setText("");
+            return;
+        }
+        
+        if (ct.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "City & Address is required");
+            ct.setText("");
+            return;
+        }
+        
+        if (dt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Date of Birth is required");
+            dt.setText("");
+            return;
+        }
 
-           JOptionPane.showMessageDialog(null, "Error! Complete the Information!"); 
-           return;
-       }
+        if (em.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Email is required");
+            em.setText(""); 
+            return;
+        } 
+        
+        String input = cn.getText();
+        if (!input.matches("[0-9]{11}")) {  
+            JOptionPane.showMessageDialog(null, "Please enter a valid contact number (11 digits is required)");
+            cn.setText("");
+            return;
+        }
 
-       if (!new String(pass.getPassword()).equals(new String(confirmpass.getPassword()))) {
-           JOptionPane.showMessageDialog(null, "Error! Passwords do not match.");
-           return;
-       }
+        String email = em.getText();
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
 
-       String password = new String(pass.getPassword());
-       if (password.length() < 8) {
-           JOptionPane.showMessageDialog(null, "Error! Password must be at least 8 characters.", "Message", JOptionPane.ERROR_MESSAGE);
-           return;
-       }
+        if (!matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email!");
+            em.setText("");
+            return;
+        }
 
-       String contact = contactnumber.getText();
-       if (!contact.matches("\\d+")) {
-           JOptionPane.showMessageDialog(null, "Error! Contact number must only contain numbers.");
-           return;
-       }
+        if (un.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username is required");
+            un.setText(""); 
+            return;
+        }
 
-       String[] existingUsernames = {"alcaya", "daniel", "gwapo","Andregwapo"};
-       for (String existingUsername : existingUsernames) {
-           if (un.getText().equals(existingUsername)) {
-               JOptionPane.showMessageDialog(null, "Error! Username already taken.");
-               return;
-           }
-       }
-       JOptionPane.showMessageDialog(null, "Registration Successful!");
+        String password = new String(pass.getPassword());
+        String confirmPassword = new String(confirmpass.getPassword());
 
-       loginForm log = new loginForm(); 
-       log.setVisible(true);  
-       this.dispose(); 
+        if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Password is required");
+            pass.setText(""); 
+            return;
+        }
+
+        if (password.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Password should have at least 8 characters");
+            pass.setText("");
+            return;
+        }
+
+        if (!password.matches(".*[!@#$%^&*()-+].*")) {
+            JOptionPane.showMessageDialog(null, "Password must at least one special character !!");
+            pass.setText("");
+            return;
+        }
+
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(null, "Passwords do not match!");
+            confirmpass.setText("");
+            return;
+        }
+
+        new loginForm().setVisible(true);
+    
 
     }//GEN-LAST:event_jButton2ActionPerformed
     
@@ -309,6 +468,70 @@ public class registrationForm extends javax.swing.JFrame {
     private void jPanel2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel2AncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2AncestorAdded
+
+    private void exitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseEntered
+        exit.setBackground(hover);
+    }//GEN-LAST:event_exitMouseEntered
+
+    private void exitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseExited
+        exit.setBackground(defaultcolor);
+    }//GEN-LAST:event_exitMouseExited
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
+
+    private void emKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emKeyReleased
+  
+   
+
+    }//GEN-LAST:event_emKeyReleased
+
+    private void emActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emActionPerformed
+
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passActionPerformed
+
+    private void ctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ctActionPerformed
+
+    private void confirmpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmpassActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+         if (jCheckBox1.isSelected()){
+            pass.setEchoChar((char)0);
+         }
+        else{
+            pass.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        jButton2.setBackground(hover);
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        jButton2.setBackground(defaultcolor);
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+        jLabel4.setBackground(hover);
+                
+    }//GEN-LAST:event_jLabel4MouseEntered
+
+    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
+       jLabel4.setBackground(defaultcolor);
+    }//GEN-LAST:event_jLabel4MouseExited
+
+    private void dtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dtActionPerformed
   
     /**
      * @param args the command line arguments
@@ -346,15 +569,18 @@ public class registrationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cityadd;
+    private javax.swing.JTextField cn;
     private javax.swing.JPasswordField confirmpass;
-    private javax.swing.JTextField contactnumber;
-    private javax.swing.JTextField datebirth;
+    private javax.swing.JTextField ct;
+    private javax.swing.JTextField dt;
+    private javax.swing.JTextField em;
+    private javax.swing.JLabel email;
+    private javax.swing.JLabel eml;
+    private javax.swing.JButton exit;
     private javax.swing.JTextField fn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -369,7 +595,6 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField status;
     private javax.swing.JTextField un;
     // End of variables declaration//GEN-END:variables
 }
